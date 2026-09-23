@@ -3,14 +3,11 @@ La capacidad de estos autos es de 4 pasajeros, su velocidad máxima 150 km/h, y 
 La municipalidad no estableció un color fijo para sus Corsa; por lo tanto, debe informarse el color de cada uno.
 */
 class ChevroletCorsa {
-  const pasajeros = 4
-  const velocidadMax = 150
-  const peso = 1300
   const property color
 
-  method peso() = peso
-  method pasajeros() = pasajeros
-  method velocidadMaxima() = velocidadMax
+  method peso() = 1300
+  method pasajeros() = 4
+  method velocidadMaxima() = 150
 }
 
 /*
@@ -22,27 +19,12 @@ El peso es 1200 kg, más 150 kg adicionales si tiene tanque adicional.
 Todos los autos de este tipo con que cuenta la municipalidad son azules.
 */
 class RenaultKwid{
-  var pasajeros
-  var velocidad 
-  var peso
-  const color = "azul"
+  const tanqueAdicional
+  method pasajeros() = if(tanqueAdicional) 3 else 4
+  method velocidadMaxima() = if(tanqueAdicional) 120 else 110
+  method peso() = if(tanqueAdicional) 1350 else 1200
+  method color() = "azul"
 
-  method ponerTanque(){
-    pasajeros = 3
-    velocidad = 120
-    peso = 1350
-  }
-
-  method sacarTanque(){
-    pasajeros = 4
-    velocidad = 110
-    peso = 1200
-  }
-
-  method peso() = peso
-  method pasajeros() = pasajeros
-  method velocidadMaxima() = velocidad
-  method color() = color
 }
 
 /*
@@ -59,47 +41,43 @@ La velocidad máxima es la que permite el motor.
 El peso es 4000 kg más el peso del interior más el del motor.
 Finalmente, digamos que la Trafic es de color blanco, independientemente del interior y el motor que tenga puestos.
 */
-class Trafic{
-  var pasajeros
-  var pesoDelInterior
-  var pesoDelMotor
-  var velocidadMaxima
-  const color = "blanco"
+object trafic{
+  var interior = interiorComodo
+  var motor = motorPuluenta
 
-  method cambiarAInteriorComodo(){
-    pasajeros = 5
-    pesoDelInterior = 700
-  }
+  method pasajeros() = interior.capacidad()
+  method velocidadMaxima() = motor.velocidad()
+  method peso() = 4000 + interior.peso() + motor.peso()
+  method color() = "blanco"
 
-  method cambiarAInteriorPopular(){
-    pasajeros = 12
-    pesoDelInterior = 1000
-  }
+  method cambiarInterior(nuevoInterior){interior = nuevoInterior}
 
-  method cambiarAMotorPuluenta(){
-    pesoDelMotor = 800
-    velocidadMaxima = 130
-  }  
-
-  method cambiarAMotorBataton(){
-    pesoDelMotor = 500
-    velocidadMaxima = 80
-  }
-
-  method peso() = 4000 + pesoDelInterior + pesoDelMotor 
-  method pasajeros() = pasajeros
-  method velocidadMaxima() = velocidadMaxima
-  method color() = color
+  method cambiarMotor(nuevoMotor){motor = nuevoMotor}
 }
 
-class AutosEspeciales{
-  var pasajeros
-  var peso
-  var velocidadMaxima
-  var color
+object interiorComodo{
+  method capacidad() = 5
+  method peso() = 700
+}
 
-  method peso() = peso
-  method pasajeros() = pasajeros
-  method velocidadMaxima() = velocidadMaxima
-  method color() = color
+object interiorPopular{
+  method capacidad() = 12
+  method peso() = 1000
+}
+
+object motorPuluenta{
+  method velocidad() = 130
+  method peso() = 800
+}
+
+object motorBataton{
+  method velocidad() = 80
+  method peso() = 500
+}
+
+class AutoEspecial{
+  const property pasajeros
+  const property peso
+  const property velocidadMaxima
+  const property color
 }
