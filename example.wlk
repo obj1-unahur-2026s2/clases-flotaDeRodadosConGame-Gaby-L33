@@ -7,6 +7,10 @@ class ChevroletCorsa {
   const velocidadMax = 150
   const peso = 1300
   const property color
+
+  method peso() = peso
+  method pasajeros() = pasajeros
+  method velocidadMaxima() = velocidadMax
 }
 
 /*
@@ -18,9 +22,9 @@ El peso es 1200 kg, más 150 kg adicionales si tiene tanque adicional.
 Todos los autos de este tipo con que cuenta la municipalidad son azules.
 */
 class RenaultKwid{
-  var pasajeros = 4
-  var velocidad = 110
-  var peso = 1200
+  var pasajeros
+  var velocidad 
+  var peso
   const color = "azul"
 
   method ponerTanque(){
@@ -34,6 +38,11 @@ class RenaultKwid{
     velocidad = 110
     peso = 1200
   }
+
+  method peso() = peso
+  method pasajeros() = pasajeros
+  method velocidadMaxima() = velocidad
+  method color() = color
 }
 
 /*
@@ -51,10 +60,10 @@ El peso es 4000 kg más el peso del interior más el del motor.
 Finalmente, digamos que la Trafic es de color blanco, independientemente del interior y el motor que tenga puestos.
 */
 class Trafic{
-  var pasajeros = 5
-  var pesoDelInterior = 700
-  var pesoDelMotor = 800
-  var velocidadMaxima = 130
+  var pasajeros
+  var pesoDelInterior
+  var pesoDelMotor
+  var velocidadMaxima
   const color = "blanco"
 
   method cambiarAInteriorComodo(){
@@ -76,8 +85,21 @@ class Trafic{
     pesoDelMotor = 500
     velocidadMaxima = 80
   }
+
+  method peso() = 4000 + pesoDelInterior + pesoDelMotor 
+  method pasajeros() = pasajeros
+  method velocidadMaxima() = velocidadMaxima
+  method color() = color
 }
 
 class AutosEspeciales{
+  var pasajeros
+  var peso
+  var velocidadMaxima
+  var color
 
+  method peso() = peso
+  method pasajeros() = pasajeros
+  method velocidadMaxima() = velocidadMaxima
+  method color() = color
 }
